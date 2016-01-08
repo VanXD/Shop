@@ -1,17 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
-<head>
-    <title>登录</title>
-    <style>.error{color:red;}</style>
-</head>
 <body>
-
-<div class="error">${error}</div>
-<form action="${pageContext.request.contextPath}/login" method="post">
-    用户名：<input type="text" name="username"><br/>
-    密码：<input type="password" name="password"><br/>
-    <input type="submit" value="登录">
-</form>
-
+<shiro:guest>
+    欢迎游客访问，<a href="${pageContext.request.contextPath}/login.jsp">点击登录</a><br/>
+</shiro:guest>
+<shiro:user>
+    欢迎[<shiro:principal/>]登录，<a href="${pageContext.request.contextPath}/logout">点击退出</a><br/>
+</shiro:user>
 </body>
 </html>

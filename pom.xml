@@ -21,7 +21,7 @@
         <maven.install.plugin.version>2.3.1</maven.install.plugin.version>
         <maven.deploy.plugin.version>2.7</maven.deploy.plugin.version>
 
-        <org.springframework.version>3.2.10.RELEASE</org.springframework.version>
+        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
         <org.apache.shiro.version>1.2.2</org.apache.shiro.version>
     </properties>
 
