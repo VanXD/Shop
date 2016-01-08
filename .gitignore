@@ -48,4 +48,4 @@ Temporary Items
 
 # Intellij IDEA
 .iml
-.idea/*
+.idea/
