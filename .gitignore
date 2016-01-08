@@ -47,5 +47,6 @@ Temporary Items
 .apdisk
 
 # Intellij IDEA
-.iml
 .idea/
+*.iml
+.idea/workspace.xml
