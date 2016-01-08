@@ -49,3 +49,5 @@ Temporary Items
 # Intellij IDEA
 .idea/
 *.iml
+*.class
+*/target/
