@@ -8,7 +8,6 @@
     <packaging>jar</packaging>
     <description>
         1.VO, BO, POJO
-        2.DAO
     </description>
     <name>base</name>
     <url>http://maven.apache.org</url>

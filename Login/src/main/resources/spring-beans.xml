@@ -2,20 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <!--<context:component-scan base-package="com.github.zhangkaitao" use-default-filters="false">-->
-        <!--<context:include-filter type="regex" expression="com\.ljn\.spring\..*"/>-->
-    <!--</context:component-scan>-->
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+    <!-- 加载配置文件 -->
+    <context:property-placeholder
+            ignore-resource-not-found="true" location="classpath*:config.properties"/>
     <!-- 扫描除了spring controller的其他注解 -->
-    <context:component-scan base-package="com.github.zhangkaitao">
+    <context:component-scan base-package="com.github.vanxd">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
-    <!-- data source -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/shop"/>
@@ -23,42 +24,35 @@
         <property name="password" value="1111"/>
     </bean>
 
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-    <bean abstract="true" id="jdbcDaoSupport" class="org.springframework.jdbc.core.support.JdbcDaoSupport">
-        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- Base DAO -->
-    <!--<bean id="baseDao" abstract="true">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-    <!--</bean>-->
-
-    <!-- DAO -->
-    <!--<bean id="permissionDao" class="com.github.zhangkaitao.shiro.chapter12.dao.PermissionDaoImpl" parent="baseDao"/>-->
-    <!--<bean id="roleDao" class="com.github.zhangkaitao.shiro.chapter12.dao.RoleDaoImpl" parent="baseDao"/>-->
-    <!--<bean id="userDao" class="com.github.zhangkaitao.shiro.chapter12.dao.UserDaoImpl" parent="baseDao"/>-->
-
-    <!-- Service -->
-    <!--<bean id="permissionService" class="com.github.zhangkaitao.shiro.chapter12.service.PermissionServiceImpl">-->
-        <!--<property name="permissionDao" ref="permissionDao"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="roleService" class="com.github.zhangkaitao.shiro.chapter12.service.RoleServiceImpl">-->
-        <!--<property name="roleDao" ref="roleDao"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="passwordHelper" class="com.github.zhangkaitao.shiro.chapter12.service.PasswordHelper">-->
-        <!--<property name="algorithmName" value="md5"/>-->
-        <!--<property name="hashIterations" value="2"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="userService" class="com.github.zhangkaitao.shiro.chapter12.service.UserServiceImpl">-->
-        <!--<property name="userDao" ref="userDao"/>-->
-        <!--<property name="passwordHelper" ref="passwordHelper"/>-->
-    <!--</bean>-->
-
+    <bean id="objectMapper"
+          class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="featuresToEnable">
+            <array>
+                <util:constant
+                        static-field="com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES"/>
+                <util:constant
+                        static-field="com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES"/>
+                <util:constant
+                        static-field="com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY"/>
+            </array>
+        </property>
+        <property name="featuresToDisable">
+            <array>
+                <util:constant
+                        static-field="com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES"/>
+            </array>
+        </property>
+    </bean>
 
 </beans>

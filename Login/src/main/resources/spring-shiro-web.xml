@@ -2,8 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- 缓存管理器 使用Ehcache实现 -->
@@ -12,7 +11,7 @@
     </bean>
 
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="com.github.zhangkaitao.shiro.chapter12.credentials.RetryLimitHashedCredentialsMatcher">
+    <bean id="credentialsMatcher" class="com.github.vanxd.credentials.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager"/>
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="2"/>
@@ -20,7 +19,7 @@
     </bean>
 
     <!-- Realm实现 -->
-    <bean id="userRealm" class="com.github.zhangkaitao.shiro.chapter12.realm.UserRealm">
+    <bean id="userRealm" class="com.github.vanxd.realm.UserRealm">
         <property name="userService" ref="userService"/>
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="true"/>
@@ -39,6 +38,21 @@
         <property name="httpOnly" value="true"/>
         <property name="maxAge" value="180000"/>
     </bean>
+
+    <!--<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">-->
+        <!--<constructor-arg value="rememberMe"/>-->
+        <!--<property name="httpOnly" value="true"/>-->
+        <!--<property name="maxAge" value="-1"/>-->
+        <!--&lt;!&ndash; 30天 &ndash;&gt;-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; rememberMe管理器 &ndash;&gt;-->
+    <!--<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">-->
+        <!--&lt;!&ndash; rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度（128 256 512 位）&ndash;&gt;-->
+        <!--&lt;!&ndash;ZUdSNFpIaGs== xdxdxd  &ndash;&gt;-->
+        <!--<property name="cipherKey"-->
+                  <!--value="#{T(org.apache.shiro.codec.Base64).decode('ZUdSNFpIaGs==')}"/>-->
+        <!--<property name="cookie" ref="rememberMeCookie"/>-->
+    <!--</bean>-->
 
     <!-- 会话DAO -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
@@ -68,6 +82,7 @@
         <property name="realm" ref="userRealm"/>
         <property name="sessionManager" ref="sessionManager"/>
         <property name="cacheManager" ref="cacheManager"/>
+        <!--<property name="rememberMeManager" ref="rememberMeManager"/>-->
     </bean>
 
     <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
@@ -80,6 +95,7 @@
     <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
+        <property name="rememberMeParam" value="rememberMe"/>
         <property name="loginUrl" value="/login.jsp"/>
     </bean>
 
@@ -99,6 +115,8 @@
                 /unauthorized.jsp = anon
                 /login.jsp = authc
                 /logout = logout
+                /authenticated.jsp = authc
+                /resources/** = anon
                 /** = user
             </value>
         </property>

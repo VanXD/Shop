@@ -8,5 +8,8 @@
 <shiro:user>
     欢迎[<shiro:principal/>]登录，<a href="${pageContext.request.contextPath}/logout">点击退出</a><br/>
 </shiro:user>
+<shiro:hasRole name="admin">
+    您有角色admin
+</shiro:hasRole>
 </body>
 </html>
