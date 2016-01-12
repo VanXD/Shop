@@ -99,6 +99,9 @@
         <property name="loginUrl" value="/login.jsp"/>
     </bean>
 
+    <bean id="sslFilter" class="org.apache.shiro.web.filter.authz.SslFilter">
+        <property name="port" value="8443"/>
+    </bean>
     <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -107,13 +110,14 @@
         <property name="filters">
             <util:map>
                 <entry key="authc" value-ref="formAuthenticationFilter"/>
+                <entry key="ssl" value-ref="sslFilter"/>
             </util:map>
         </property>
         <property name="filterChainDefinitions">
             <value>
                 /index.jsp = anon
                 /unauthorized.jsp = anon
-                /login.jsp = authc
+                /login.jsp = ssl,authc
                 /logout = logout
                 /authenticated.jsp = authc
                 /resources/** = anon
