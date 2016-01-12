@@ -39,20 +39,20 @@
         <property name="maxAge" value="180000"/>
     </bean>
 
-    <!--<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">-->
-        <!--<constructor-arg value="rememberMe"/>-->
-        <!--<property name="httpOnly" value="true"/>-->
-        <!--<property name="maxAge" value="-1"/>-->
-        <!--&lt;!&ndash; 30天 &ndash;&gt;-->
-    <!--</bean>-->
-    <!--&lt;!&ndash; rememberMe管理器 &ndash;&gt;-->
-    <!--<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">-->
-        <!--&lt;!&ndash; rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度（128 256 512 位）&ndash;&gt;-->
-        <!--&lt;!&ndash;ZUdSNFpIaGs== xdxdxd  &ndash;&gt;-->
-        <!--<property name="cipherKey"-->
-                  <!--value="#{T(org.apache.shiro.codec.Base64).decode('ZUdSNFpIaGs==')}"/>-->
-        <!--<property name="cookie" ref="rememberMeCookie"/>-->
-    <!--</bean>-->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="-1"/>
+        <!-- 30天 -->
+    </bean>
+    <!-- rememberMe管理器 -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <!-- rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度（128 256 512 位）-->
+        <!--ZUdSNFpIaGs== xdxdxd  -->
+        <property name="cipherKey"
+                  value="#{T(org.apache.shiro.codec.Base64).decode('ZUdSNFpIaGs==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
 
     <!-- 会话DAO -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
