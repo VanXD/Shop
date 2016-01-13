@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Jasig CAS ${project.version}">
+    <body>        
+		<menu ref="parent" />
+        <menu ref="reports" name="Reports" inherit="top" />
+		<menu ref="modules" name="Modules" inherit="top" />
+    </body>
+</project>

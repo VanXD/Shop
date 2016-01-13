@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <description>
+    Controls the generation of the unique identifiers for tickets.  You most likely do not need to modify these.  Though you may need to add
+    the SAML ticket id generator.
+    </description>
+       
+	<!-- ID Generators -->
+	<bean id="ticketGrantingTicketUniqueIdGenerator" class="org.jasig.cas.util.DefaultUniqueTicketIdGenerator"
+        c:maxLength="50" c:suffix="${host.name}" />
+
+	<bean id="serviceTicketUniqueIdGenerator" class="org.jasig.cas.util.DefaultUniqueTicketIdGenerator"
+        c:maxLength="20" c:suffix="${host.name}" />
+
+    <bean id="loginTicketUniqueIdGenerator" class="org.jasig.cas.util.DefaultUniqueTicketIdGenerator"
+        c:maxLength="30" c:suffix="${host.name}" />
+    	
+    <bean id="proxy20TicketUniqueIdGenerator" class="org.jasig.cas.util.DefaultUniqueTicketIdGenerator"
+        c:maxLength="20" c:suffix="${host.name}" />
+	 
+	<util:map id="uniqueIdGeneratorsMap">
+		<entry
+			key="org.jasig.cas.authentication.principal.SimpleWebApplicationServiceImpl"
+			value-ref="serviceTicketUniqueIdGenerator" />
+	</util:map>
+
+</beans>
