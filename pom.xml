@@ -37,6 +37,7 @@
     <modules>
         <module>Base</module>
         <module>Login</module>
+        <module>LoginCas</module>
     </modules>
 
     <build>
