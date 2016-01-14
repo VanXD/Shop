@@ -33,7 +33,11 @@
     <version>4.0.0-RC3</version>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.vanxd</groupId>
+            <artifactId>base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp-support</artifactId>
@@ -82,10 +86,15 @@
             <artifactId>druid</artifactId>
             <version>0.2.23</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.2.2</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>Login-Cas</finalName>
+        <finalName>LoginCas</finalName>
         <plugins>
             <!-- package 跳过测试 -->
             <plugin>
@@ -158,7 +167,7 @@
                                 <!-- 复制war到本地tomcat -->
                                 <copy todir="D:\tomcat\apache-tomcat-7.0.64\webapps">
                                     <fileset dir="D:\IDEAWorkSpaces\Shop\LoginCas\target">
-                                        <include name="Login-Cas.war"/>
+                                        <include name="LoginCas.war"/>
                                     </fileset>
                                 </copy>
                             </tasks>
