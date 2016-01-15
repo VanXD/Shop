@@ -1,49 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.vanxd</groupId>
-    <artifactId>login</artifactId>
-    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>login</name>
+    <groupId>com.vanxd</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>login-client</artifactId>
+    <packaging>war</packaging>
+    <name>login-client</name>
     <url>http://maven.apache.org</url>
 
-    <parent>
-        <groupId>com.vanxd</groupId>
-        <artifactId>shop</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
     <dependencies>
-        <!-- 项目实体 -->
-        <dependency>
-            <groupId>com.vanxd</groupId>
-            <artifactId>base</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.9</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.0.0.RELEASE</version>
             <scope>test</scope>
         </dependency>
 
@@ -57,29 +32,40 @@
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>${org.apache.shiro.version}</version>
+            <version>1.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>${org.apache.shiro.version}</version>
+            <version>1.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-ehcache</artifactId>
-            <version>${org.apache.shiro.version}</version>
+            <version>1.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-quartz</artifactId>
-            <version>${org.apache.shiro.version}</version>
+            <version>1.2.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
             <version>1.2.2</version>
         </dependency>
 
@@ -93,6 +79,24 @@
             <artifactId>druid</artifactId>
             <version>0.2.23</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
 
         <!-- aspectj相关jar包-->
         <dependency>
@@ -109,94 +113,40 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>4.0.0.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>4.0.0.RELEASE</version>
         </dependency>
 
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>4.0.0.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>4.0.0.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>4.0.0.RELEASE</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <scope>compile</scope>
-        </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>login</finalName>
+        <finalName>login-client</finalName>
         <plugins>
-            <!-- package 跳过测试 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.4.2</version>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <warName>${project.name}</warName>
-                    <webResources>
-                        <resource>
-                            <filtering>true</filtering>
-                            <directory>src/main/webapp</directory>
-                            <includes>
-                                <include>**/web.xml</include>
-                            </includes>
-                        </resource>
-                    </webResources>
-                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
-                    <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -211,7 +161,7 @@
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                         <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                            <port>8443</port>
+                            <port>9443</port>
                             <maxIdleTime>60000</maxIdleTime>
                             <keystore>${project.basedir}/localhost.keystore</keystore>
                             <password>123456</password>
@@ -221,15 +171,16 @@
                 </configuration>
             </plugin>
 
+
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <uriEncoding>UTF-8</uriEncoding>
                     <path>/${project.build.finalName}</path>
-                    <port>5555</port>
+                    <httpPort>9080</httpPort>
                 </configuration>
+
             </plugin>
             <!-- package后执行的任务 -->
             <plugin>
@@ -241,9 +192,9 @@
                         <configuration>
                             <tasks>
                                 <!-- 复制war到本地tomcat -->
-                                <copy todir="D:\tomcat\apache-tomcat-7.0.64\webapps">
-                                    <fileset dir="D:\IDEAWorkSpaces\Shop\Login\target">
-                                        <include name="login.war"/>
+                                <copy todir="D:\tomcat\apache-tomcat-7.0.64 - 2\webapps">
+                                    <fileset dir="D:\IDEAWorkSpaces\Shop\LoginClient\target">
+                                        <include name="login-client.war"/>
                                     </fileset>
                                 </copy>
                             </tasks>
@@ -255,5 +206,8 @@
                 </executions>
             </plugin>
         </plugins>
+
+
     </build>
+
 </project>
