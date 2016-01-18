@@ -28,7 +28,7 @@
         <property name="authorizationCachingEnabled" value="true"/>
         <property name="authorizationCacheName" value="authorizationCache"/>
         <property name="casServerUrlPrefix" value="https://localhost:8443/LoginCas"/>
-        <property name="casService" value="https://localhost:9443/login-client/cas"/>
+        <property name="casService" value="https://localhost:8443/admin/cas"/>
     </bean>
 
     <!-- 会话ID生成器 -->
@@ -101,7 +101,7 @@
     <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="https://localhost:8443/LoginCas/login?service=https://localhost:9443/login-client/cas"/>
+        <property name="loginUrl" value="https://localhost:8443/LoginCas/login?service=https://localhost:8443/admin/cas"/>
         <property name="successUrl" value="/"/>
         <property name="filters">
             <util:map>

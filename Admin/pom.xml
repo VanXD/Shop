@@ -3,9 +3,9 @@
     <version>1.0-SNAPSHOT</version>
     <groupId>com.vanxd</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>login-client</artifactId>
+    <artifactId>admin</artifactId>
     <packaging>war</packaging>
-    <name>login-client</name>
+    <name>admin</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -145,7 +145,7 @@
     </dependencies>
 
     <build>
-        <finalName>login-client</finalName>
+        <finalName>admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -161,7 +161,7 @@
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                         <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                            <port>9443</port>
+                            <port>8443</port>
                             <maxIdleTime>60000</maxIdleTime>
                             <keystore>${project.basedir}/localhost.keystore</keystore>
                             <password>123456</password>
@@ -192,9 +192,9 @@
                         <configuration>
                             <tasks>
                                 <!-- 复制war到本地tomcat -->
-                                <copy todir="D:\tomcat\apache-tomcat-7.0.64 - 2\webapps">
-                                    <fileset dir="D:\IDEAWorkSpaces\Shop\LoginClient\target">
-                                        <include name="login-client.war"/>
+                                <copy todir="D:\tomcat\apache-tomcat-7.0.64\webapps">
+                                    <fileset dir="D:\IDEAWorkSpaces\Shop\Admin\target">
+                                        <include name="admin.war"/>
                                     </fileset>
                                 </copy>
                             </tasks>
