@@ -1,4 +1,4 @@
-package com.github.zhangkaitao.shiro.chapter15.credentials;
+package com.github.vanxd.credentials;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

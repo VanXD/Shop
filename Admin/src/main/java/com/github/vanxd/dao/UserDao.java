@@ -1,6 +1,6 @@
-package com.github.zhangkaitao.shiro.chapter15.dao;
+package com.github.vanxd.dao;
 
-import com.github.zhangkaitao.shiro.chapter15.entity.User;
+import com.github.vanxd.entity.User;
 
 import java.util.Set;
 

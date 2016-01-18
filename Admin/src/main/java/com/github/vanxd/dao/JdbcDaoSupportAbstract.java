@@ -10,8 +10,8 @@ public abstract class JdbcDaoSupportAbstract {
     /**
      * jdbcTemplate
      */
-@Autowired
-private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;

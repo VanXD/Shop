@@ -1,7 +1,7 @@
-package com.github.zhangkaitao.shiro.chapter15.service;
+package com.github.vanxd.service;
 
-import com.github.zhangkaitao.shiro.chapter15.dao.UserDao;
-import com.github.zhangkaitao.shiro.chapter15.entity.User;
+import com.github.vanxd.dao.UserDao;
+import com.github.vanxd.entity.User;
 
 import java.util.Set;
 

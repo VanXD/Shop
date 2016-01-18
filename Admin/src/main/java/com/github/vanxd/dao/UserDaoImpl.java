@@ -1,10 +1,10 @@
-package com.github.zhangkaitao.shiro.chapter15.dao;
+package com.github.vanxd.dao;
 
-import com.github.zhangkaitao.shiro.chapter15.entity.User;
+import com.github.vanxd.entity.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +18,8 @@ import java.util.Set;
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
-public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
+@Repository("userDao")
+public class UserDaoImpl extends JdbcDaoSupportAbstract implements UserDao {
 
     public User createUser(final User user) {
         final String sql = "insert into sys_users(username, password, salt, locked) values(?,?,?, ?)";

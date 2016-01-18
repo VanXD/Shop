@@ -1,6 +1,6 @@
-package com.github.zhangkaitao.shiro.chapter15.realm;
+package com.github.vanxd.realm;
 
-import com.github.zhangkaitao.shiro.chapter15.service.UserService;
+import com.github.vanxd.service.UserService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cas.CasRealm;

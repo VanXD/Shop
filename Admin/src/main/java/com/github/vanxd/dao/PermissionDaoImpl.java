@@ -1,9 +1,9 @@
-package com.github.zhangkaitao.shiro.chapter15.dao;
+package com.github.vanxd.dao;
 
-import com.github.zhangkaitao.shiro.chapter15.entity.Permission;
+import com.github.vanxd.entity.Permission;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
-public class PermissionDaoImpl extends JdbcDaoSupport implements PermissionDao {
+@Repository("permissionDao")
+public class PermissionDaoImpl extends JdbcDaoSupportAbstract implements PermissionDao {
 
     public Permission createPermission(final Permission permission) {
         final String sql = "insert into sys_permissions(permission, description, available) values(?,?,?)";

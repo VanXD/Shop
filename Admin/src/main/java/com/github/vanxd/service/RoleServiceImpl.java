@@ -1,7 +1,7 @@
-package com.github.zhangkaitao.shiro.chapter15.service;
+package com.github.vanxd.service;
 
-import com.github.zhangkaitao.shiro.chapter15.dao.RoleDao;
-import com.github.zhangkaitao.shiro.chapter15.entity.Role;
+import com.github.vanxd.dao.RoleDao;
+import com.github.vanxd.entity.Role;
 
 /**
  * <p>User: Zhang Kaitao

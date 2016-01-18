@@ -1,4 +1,4 @@
-package com.github.zhangkaitao.shiro.chapter15.entity;
+package com.github.vanxd.entity;
 
 import java.io.Serializable;
 

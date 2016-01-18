@@ -1,6 +1,6 @@
-package com.github.zhangkaitao.shiro.chapter15.service;
+package com.github.vanxd.service;
 
-import com.github.zhangkaitao.shiro.chapter15.entity.User;
+import com.github.vanxd.entity.User;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -10,6 +10,7 @@ import org.apache.shiro.util.ByteSource;
  * <p>User: Zhang Kaitao
  * <p>Date: 14-1-28
  * <p>Version: 1.0
+ * <p>config at : spring-beans.xml</p>
  */
 public class PasswordHelper {
 

@@ -1,13 +1,17 @@
-package com.github.zhangkaitao.shiro.chapter15.service;
+package com.github.vanxd.service;
 
-import com.github.zhangkaitao.shiro.chapter15.dao.PermissionDao;
-import com.github.zhangkaitao.shiro.chapter15.entity.Permission;
+import com.github.vanxd.dao.PermissionDao;
+import com.github.vanxd.entity.Permission;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>User: Zhang Kaitao
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
+@Service("")
+@Transactional
 public class PermissionServiceImpl implements PermissionService {
 
     private PermissionDao permissionDao;

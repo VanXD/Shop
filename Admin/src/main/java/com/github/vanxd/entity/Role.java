@@ -1,4 +1,4 @@
-package com.github.zhangkaitao.shiro.chapter15.entity;
+package com.github.vanxd.entity;
 
 import java.io.Serializable;
 
@@ -7,17 +7,17 @@ import java.io.Serializable;
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
-public class Permission implements Serializable {
+public class Role implements Serializable {
     private Long id;
-    private String permission; //权限标识 程序中判断使用,如"user:create"
-    private String description; //权限描述,UI界面显示使用
+    private String role; //角色标识 程序中判断使用,如"admin"
+    private String description; //角色描述,UI界面显示使用
     private Boolean available = Boolean.FALSE; //是否可用,如果不可用将不会添加给用户
 
-    public Permission() {
+    public Role() {
     }
 
-    public Permission(String permission, String description, Boolean available) {
-        this.permission = permission;
+    public Role(String role, String description, Boolean available) {
+        this.role = role;
         this.description = description;
         this.available = available;
     }
@@ -30,12 +30,12 @@ public class Permission implements Serializable {
         this.id = id;
     }
 
-    public String getPermission() {
-        return permission;
+    public String getRole() {
+        return role;
     }
 
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getDescription() {
@@ -59,7 +59,7 @@ public class Permission implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Permission role = (Permission) o;
+        Role role = (Role) o;
 
         if (id != null ? !id.equals(role.id) : role.id != null) return false;
 
@@ -75,7 +75,7 @@ public class Permission implements Serializable {
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", permission='" + permission + '\'' +
+                ", role='" + role + '\'' +
                 ", description='" + description + '\'' +
                 ", available=" + available +
                 '}';
