@@ -97,11 +97,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
@@ -165,30 +160,15 @@
     <build>
         <finalName>admin</finalName>
         <plugins>
+            <!-- package 跳过测试 -->
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.8.v20121106</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
                 <configuration>
-                    <webAppConfig>
-                        <contextPath>/${project.build.finalName}</contextPath>
-                    </webAppConfig>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>9080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                        <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                            <port>8443</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                            <keystore>${project.basedir}/localhost.keystore</keystore>
-                            <password>123456</password>
-                            <keyPassword>123456</keyPassword>
-                        </connector>
-                    </connectors>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
 
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -196,36 +176,13 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/${project.build.finalName}</path>
-                    <httpPort>9080</httpPort>
+                    <port>8090</port>
+                    <httpsPort>9443</httpsPort>
+                    <keystoreFile>${basedir}/localhost.keystore</keystoreFile>
+                    <keystorePass>123456</keystorePass>
                 </configuration>
-
-            </plugin>
-            <!-- package后执行的任务 -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-lib-src-webapps</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <tasks>
-                                <!-- 复制war到本地tomcat -->
-                                <copy todir="D:\tomcat\apache-tomcat-7.0.64\webapps">
-                                    <fileset dir="D:\IDEAWorkSpaces\Shop\Admin\target">
-                                        <include name="admin.war"/>
-                                    </fileset>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
-
-
     </build>
 
 </project>

@@ -105,29 +105,6 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.8.v20121106</version>
-                <configuration>
-                    <webAppConfig>
-                        <contextPath>/${project.build.finalName}</contextPath>
-                    </webAppConfig>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                        <connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-                            <port>8443</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                            <keystore>${project.basedir}/localhost.keystore</keystore>
-                            <password>123456</password>
-                            <keyPassword>123456</keyPassword>
-                        </connector>
-                    </connectors>
-                </configuration>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -135,9 +112,13 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/${project.build.finalName}</path>
+                    <port>8080</port>
+                    <httpsPort>8443</httpsPort>
+                    <keystoreFile>${basedir}/localhost.keystore</keystoreFile>
+                    <keystorePass>123456</keystorePass>
                 </configuration>
-
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -154,29 +135,6 @@
                         </resource>
                     </webResources>
                 </configuration>
-            </plugin>
-            <!-- package后执行的任务 -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-lib-src-webapps</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <tasks>
-                                <!-- 复制war到本地tomcat -->
-                                <copy todir="D:\tomcat\apache-tomcat-7.0.64\webapps">
-                                    <fileset dir="D:\IDEAWorkSpaces\Shop\LoginCas\target">
-                                        <include name="LoginCas.war"/>
-                                    </fileset>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
