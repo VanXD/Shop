@@ -2,6 +2,9 @@ package com.github.vanxd.service;
 
 import com.github.vanxd.dao.UserDao;
 import com.github.vanxd.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -10,19 +13,15 @@ import java.util.Set;
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
+@Service("userService")
+@Transactional
 public class UserServiceImpl implements UserService {
-
+    @Autowired
     private UserDao userDao;
 
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
+    @Autowired
     private PasswordHelper passwordHelper;
 
-    public void setPasswordHelper(PasswordHelper passwordHelper) {
-        this.passwordHelper = passwordHelper;
-    }
 
     /**
      * 创建用户

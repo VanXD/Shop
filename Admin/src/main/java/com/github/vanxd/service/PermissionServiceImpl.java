@@ -2,6 +2,7 @@ package com.github.vanxd.service;
 
 import com.github.vanxd.dao.PermissionDao;
 import com.github.vanxd.entity.Permission;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,15 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
-@Service("")
+@Service("permissionService")
 @Transactional
 public class PermissionServiceImpl implements PermissionService {
 
+    @Autowired
     private PermissionDao permissionDao;
-
-    public void setPermissionDao(PermissionDao permissionDao) {
-        this.permissionDao = permissionDao;
-    }
 
     public Permission createPermission(Permission permission) {
         return permissionDao.createPermission(permission);

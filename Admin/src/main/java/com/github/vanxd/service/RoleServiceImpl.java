@@ -2,23 +2,20 @@ package com.github.vanxd.service;
 
 import com.github.vanxd.dao.RoleDao;
 import com.github.vanxd.entity.Role;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>User: Zhang Kaitao
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
+@Service("roleService")
+@Transactional
 public class RoleServiceImpl implements RoleService {
-
+    @Autowired
     private RoleDao roleDao;
-
-    public RoleDao getRoleDao() {
-        return roleDao;
-    }
-
-    public void setRoleDao(RoleDao roleDao) {
-        this.roleDao = roleDao;
-    }
 
     public Role createRole(Role role) {
         return roleDao.createRole(role);

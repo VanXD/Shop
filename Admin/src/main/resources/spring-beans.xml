@@ -35,6 +35,11 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <bean id="passwordHelper" class="com.github.vanxd.service.PasswordHelper">
+        <property name="algorithmName" value="md5"/>
+        <property name="hashIterations" value="2"/>
+    </bean>
+
     <bean id="objectMapper"
           class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="featuresToEnable">
@@ -55,34 +60,6 @@
         </property>
     </bean>
 
-    <!-- Base DAO -->
-    <bean id="baseDao" abstract="true">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
-    <!-- DAO -->
-    <bean id="permissionDao" class="com.github.vanxd.dao.PermissionDaoImpl" parent="baseDao"/>
-    <bean id="roleDao" class="com.github.vanxd.dao.RoleDaoImpl" parent="baseDao"/>
-    <bean id="userDao" class="com.github.vanxd.dao.UserDaoImpl" parent="baseDao"/>
-
-    <!-- Service -->
-    <bean id="permissionService" class="com.github.vanxd.service.PermissionServiceImpl">
-        <property name="permissionDao" ref="permissionDao"/>
-    </bean>
-
-    <bean id="roleService" class="com.github.vanxd.service.RoleServiceImpl">
-        <property name="roleDao" ref="roleDao"/>
-    </bean>
-
-    <bean id="passwordHelper" class="com.github.vanxd.service.PasswordHelper">
-        <property name="algorithmName" value="md5"/>
-        <property name="hashIterations" value="2"/>
-    </bean>
-
-    <bean id="userService" class="com.github.vanxd.service.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
-        <property name="passwordHelper" ref="passwordHelper"/>
-    </bean>
 
 
 </beans>
