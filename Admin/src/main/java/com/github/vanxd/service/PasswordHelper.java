@@ -1,6 +1,6 @@
 package com.github.vanxd.service;
 
-import com.github.vanxd.entity.User;
+import entity.bo.User;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;

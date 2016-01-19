@@ -1,6 +1,7 @@
 package com.github.vanxd.service;
 
-import com.github.vanxd.entity.User;
+
+import entity.bo.User;
 
 import java.util.Set;
 

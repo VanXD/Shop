@@ -1,6 +1,6 @@
 package com.github.vanxd.dao;
 
-import com.github.vanxd.entity.User;
+import entity.bo.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

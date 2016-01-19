@@ -1,6 +1,7 @@
 package com.github.vanxd.dao;
 
-import com.github.vanxd.entity.Role;
+
+import entity.bo.Role;
 
 /**
  * <p>User: Zhang Kaitao

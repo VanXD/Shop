@@ -1,6 +1,6 @@
 package com.github.vanxd.dao;
 
-import com.github.vanxd.entity.Role;
+import entity.bo.Role;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;

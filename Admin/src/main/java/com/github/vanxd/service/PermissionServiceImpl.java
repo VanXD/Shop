@@ -1,7 +1,7 @@
 package com.github.vanxd.service;
 
 import com.github.vanxd.dao.PermissionDao;
-import com.github.vanxd.entity.Permission;
+import entity.bo.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

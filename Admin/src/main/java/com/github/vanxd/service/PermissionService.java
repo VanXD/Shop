@@ -1,6 +1,7 @@
 package com.github.vanxd.service;
 
-import com.github.vanxd.entity.Permission;
+
+import entity.bo.Permission;
 
 /**
  * <p>User: Zhang Kaitao

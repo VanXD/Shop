@@ -1,7 +1,7 @@
 package com.github.vanxd.realm;
 
-import com.github.vanxd.entity.User;
 import com.github.vanxd.service.UserService;
+import entity.bo.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
