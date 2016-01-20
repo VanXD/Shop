@@ -1412,3 +1412,5 @@ SERVER IP ADDRESS: 127.0.0.1
 2016-01-19 17:58:16,326 INFO [org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner] - Beginning ticket cleanup.
 2016-01-19 17:58:16,326 INFO [org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner] - 0 tickets found to be removed.
 2016-01-19 17:58:16,326 INFO [org.jasig.cas.ticket.registry.support.DefaultTicketRegistryCleaner] - Finished ticket cleanup.
+2016-01-19 17:59:56,611 INFO [org.jasig.cas.services.DefaultServicesManagerImpl] - Reloading registered services.
+2016-01-19 17:59:56,612 INFO [org.jasig.cas.services.DefaultServicesManagerImpl] - Loaded 1 services.
